@@ -1,0 +1,21 @@
+{
+  "name": "corona-positive-api",
+  "version": "1.0.0",
+  "main": "src/server.js",
+  "repository": "git@github.com:ruchika28ag/corona-positive-api.git",
+  "author": "Ruchika Agrawal <rockstarruchi28@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon src/server.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "snoowrap": "^1.21.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  }
+}
