@@ -4,6 +4,8 @@ const cors = require('cors');
 const snoowrap = require('snoowrap');
 const config = require('./config');
 
+const news = require('./controllers/news');
+
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
@@ -14,23 +16,7 @@ app.get('/api', (req, res) => {
     res.json({message: 'It is working!'});
 })
 
-app.get('/api/news', async (req, res) => {
-    const data = await r.getSubreddit('coronavirus').search({
-        query: 'flair:"good news"',
-        sort: "new",
-        time: "all",
-    });
-    const good = data.map(post => {
-        return {
-            title: post.title,
-            thumbnail: post.thumbnail,
-            url: post.url,
-            subreddit: post.subreddit.display_name,
-            flair: post.link_flair_text,
-        }
-    })
-    res.json(good);
-})
+app.post('/api/news', news.handleNews)
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
